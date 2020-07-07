@@ -258,7 +258,7 @@ anyString.substring(3,0)
 ### String.prototype.valueOf()
 返回特定对象的原始值。重写 Object.prototype.valueOf 方法。
 
-### String.prototype.[Symbol.iterator]()
+### String.prototype[Symbol.iterator]()
 返回一个新的迭代器对象，该对象遍历字符串值的索引位置，将每个索引值作为字符串值返回。
 ```js
 var string = 'ABC';
