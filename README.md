@@ -4,12 +4,12 @@
 
 ### API
 
-- [String](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/07 String.md)
-- [Boolean](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08 Boolean.md)
-- [Number](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08 Number.md)
-- [Math](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08 Math.md)
-- [Object](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08 Object.md)
-- [Array](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09 Array.md)
+- [String](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/07%20String.md)
+- [Boolean](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08%20Boolean.md)
+- [Number](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08%20Number.md)
+- [Math](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08%20Math.md)
+- [Object](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/08%20Object.md)
+- [Array](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20Array.md)
 
 ### 常见API实现
-- [new,apply,call,reduce](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09 常见API实现(1).md)
+- [new,apply,call,reduce代码实现](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20常见API实现(1).md)
