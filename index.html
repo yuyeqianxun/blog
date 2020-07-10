@@ -7,32 +7,14 @@
   </head>
   <body>
     <script>
-      Array.prototype.myReduce = function (cb, init) {
-        console.log(this);
-        let arr = this,
-          length = arr.length,
-          i,
-          accumulator;
-        if (!Array.isArray(arr)) {
-          throw "this must be an array";
-        }
-        console.log(init)
-        if (init !== undefined) {
-          i = 0;
-          accumulator = init;
-        } else {
-          i = 1;
-          accumulator = arr[0];
-          console.log(accumulator)
-        }
-        console.log(accumulator)
-        while (i < length) {
-          accumulator = cb(accumulator, arr[i], i, arr);
-          i++;
-        }
-        return accumulator;
-      };
-      let a = [0, 1, 2, 3, 4].myReduce((prev, curr) => prev + curr,8);
+     
+     function sum(val){
+      sum.res = val*(sum.res||1)
+      sum.value = (val)=>sum.res
+      return sum
+     }
+     let res = sum(1)(2)(3).value()
+     console.log(res)
     </script>
   </body>
 </html>
