@@ -1,4 +1,9 @@
-# 基本配置
+# webpack
+
+### 基本配置
+打包命令
+> "build": "webpack"
+
 ```js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 通过 npm 安装
@@ -125,4 +130,22 @@ module.exports = {
     }
   },
 };
+```
+
+### 热重载
+启动命令
+> "start": "webpack-dev-server"
+
+> yarn add webpack-dev-serve -D
+```js
+module.exports = {
+  //...
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
+    hot: true
+  },
+};
+
 ```
