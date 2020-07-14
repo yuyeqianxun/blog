@@ -12,11 +12,14 @@
 - [Array](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20Array.md)
 
 ### 常见API实现
-- [new,apply,call,reduce代码实现](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20常见API实现(1).md)
-- [配合中文Promise A+ 规范，一步一步实现一个自己的Promise](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20常见API实现(1).md)
+- [new,apply,call,reduce,instance of代码实现](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20常见API实现(1).md)
+- [配合中文Promise A+ 规范，一步一步实现一个自己的Promise](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/09%20常见API实现(2).md)
 
 ### webpack
 - [webpack基本配置](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/10%20Webpack(1).md)
 - [webpack解析文件](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/11%20Webpack(2).md)
 - [webpack常见优化](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/11%20Webpack(3).md)
 - [webpack配置分离](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/11%20Webpack(4).md)
+
+### Vue
+- [Vue2.6源码流程图](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/14%20Vue流程.jpg)
