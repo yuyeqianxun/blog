@@ -29,7 +29,7 @@ Accept-Language: en, mi
 | Cache-Control | 控制缓存的行为 |
 | Connection | 连接管理(keep-alive) |
 | Date | 创建报文时间 |
-| Pragma | 报文指令 |
+| Pragma | 报文指令,相当于catch-control:no-cache |
 | Via | 代理服务器相关信息 |
 | Transfer-Encoding | 传输编码方式 |
 | Upgrade | 要求客户端升级协议 |
@@ -175,3 +175,6 @@ HPACK 使用2个索引表(静态索引表和动态索引表)来把头部映射�
 
 4. Server Push
 HTTP2还在一定程度上改变了传统的“请求-应答”工作模式，服务器不再是完全被动地响应请求，也可以新建“流”主动向客户端发送消息。比如，在浏览器刚请求HTML的时候就提前把可能会用到的JS、CSS文件发给客户端，减少等待的延迟，这被称为"服务器推送"
+
+### 三者的关系与区别
+![关系图](https://note.youdao.com/yws/public/resource/fefa04f064f159e4a063a61949288b11/xmlnote/E5A22BEA4F3647D59608F038AD8608E0/14994)
