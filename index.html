@@ -15,25 +15,50 @@
   </head>
   <body>
     <script>
-      if (!document.cookie.myname) {
-        console.log(1);
-        document.cookie = "myname=huaminlai;";
-        document.cookie = "name=huamin;";
-      }
-      function getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(";");
-        for (var i = 0; i < ca.length; i++) {
-          var c = ca[i].trim();
-          if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      
+      Function.prototype.mdnBind = function (otherThis) {
+        var ArrayPrototypeSlice = Array.prototype.slice;
+        if (typeof this !== "function") {
+          // closest thing possible to the ECMAScript 5
+          // internal IsCallable function
+          throw new TypeError(
+            "Function.prototype.bind - what is trying to be bound is not callable"
+          );
         }
-        return "";
+
+        var baseArgs = ArrayPrototypeSlice.call(arguments, 1),
+          baseArgsLength = baseArgs.length,
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            baseArgs.length = baseArgsLength; // reset to default base arguments
+            baseArgs.push.apply(baseArgs, arguments);
+            return fToBind.apply(
+              fNOP.prototype.isPrototypeOf(this) ? this : otherThis,
+              baseArgs
+            );
+          };
+
+        if (this.prototype) {
+          // Function.prototype doesn't have a prototype property
+          fNOP.prototype = this.prototype;
+        }
+        fBound.prototype = new fNOP();
+
+        return fBound;
       }
-      function deleCookie(cname) {
-        let d = new Date(1970);
-        let expires = "expires=" + d.toGMTString();
-        document.cookie = cname + "=;" + expires;
-      }
+      var obj = {
+        init: 1,
+        add: function (a, b) {
+          console.log(this, a, b);
+          return a + b + this.init;
+        },
+      };
+      var plus = obj.add;
+      let js = plus.bind(obj, 3, 4);
+      let my = plus.myBind(obj, 3, 4);
+      let mdn = plus.mdnBind(obj, 3, 4);
+      console.log(new js(), new my(), new mdn());
     </script>
   </body>
 </html>
