@@ -113,7 +113,7 @@ console.log(numbers);
 ```js
 var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
 var removed = myFish.splice(2, 2, 'drum', 'guitar');
-console.log(myFist,removed)//["angel", "clown", "drum", "guitar"],["mandarin", "sturgeon"]
+console.log(myFish,removed)//["angel", "clown", "drum", "guitar"],["mandarin", "sturgeon"]
 ```
 在任意的位置给数组添加或删除任意个元素,返回由被删除的元素组成的一个数组。
 
