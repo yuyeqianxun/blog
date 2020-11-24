@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .top,
+      .body {
+        margin: 20px 0;
+        width: 50px;
+        height: 50px;
+      }
+      .top {
+        background: rgb(2, 255, 55);
+      }
+      .body {
+        background: rgb(2, 82, 255);
+      }
+      .foot {
+        background: rgb(255, 251, 2);
+        padding: 20px 0;
+        width: 50px;
+        height: 150px;
+      }
+      .footer {
+        background: rgb(248, 79, 79);
+        padding: 20px 0;
+        width: 50px;
+        height: 10px;
+      }
+      .footer1 {
+        background: rgb(70, 187, 119);
+        padding: 20px 0;
+        width: 50px;
+        height: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top"></div>
+    <div class="body"></div>
+    <div class="foot">
+      <div class="footer"></div>
+      <div class="footer1"></div>
+    </div>
+    <script>
+      let getQueryStringArgs = function () {
+        // 取得没有开头问号的查询字符串
+        let qs = location.search.length > 0 ? location.search.substring(1) : "",
+          // 保存数据的对象
+          args = {};
+        // 把每个参数添加到 args 对象
+        for (let item of qs.split("&").map((kv) => kv.split("="))) {
+          let name = decodeURIComponent(item[0]),
+            value = decodeURIComponent(item[1]);
+          if (name.length) {
+            args[name] = value;
+          }
+        }
+        return args;
+      };
+      console.log(getQueryStringArgs())
+    </script>
+  </body>
+</html>
