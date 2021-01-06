@@ -18,6 +18,7 @@
 ### 常见JS知识
 - [前端存储](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/12%前端存储.md)
 - [JS原型链&上下文](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/21%原型链.md)
+- [垃圾回收](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/09/28%20javascript垃圾回收.md)
 
 ### webpack
 - [webpack基本配置](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/10%20Webpack(1).md)
@@ -38,3 +39,6 @@
 - [UPD&TCP知识](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/17%20UPD&TCP.md)
 - [HTTP缓存](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/20%20前端缓存.md)
 - [常用跨域方案](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/07/12%20跨域解决方案.md)
+
+### 常见组件实现
+- [虚拟列表](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/09/30%20虚拟列表.md)
