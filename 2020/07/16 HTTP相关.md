@@ -76,7 +76,7 @@ Accept-Language: en, mi
 ### 响应
 > 状态行 + 响应头 + 空行 + 响应正文
 
-![请求报文](https://note.youdao.com/yws/public/resource/fefa04f064f159e4a063a61949288b11/xmlnote/0D10DC1BCED34C3A9194873B40CF7078/14985)
+![响应报文](http://note.youdao.com/yws/public/resource/fefa04f064f159e4a063a61949288b11/xmlnote/3DA641EC65CE4158AB6A7178A2BBFA2E/14987)
 ```
 HTTP/1.1 200 OK
 Date: Mon, 27 Jul 2009 12:28:53 GMT
