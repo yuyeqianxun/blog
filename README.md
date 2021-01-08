@@ -42,3 +42,4 @@
 
 ### 常见组件实现
 - [虚拟列表](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/09/30%20虚拟列表.md)
+- [滑动验证码](https://github.com/yuyeqianxun/yuyeqianxun.github.io/blob/master/2020/09/30%20虚拟列表.md)

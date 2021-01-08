@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .container{
+      .container {
         height: 450px;
         overflow: auto;
       }
-      .wrapper{
-        padding: 0;
-        margin: 0;
+      .canvas {
+        width: 300px;
+        height: 200px;
       }
-      .item{
-        border:1px solid #dddddd;
+      #canvas-bg {
+        /* width: 300px;
+        height: 200px; */
+      }
+      #canvas-ver {
+        width: 300px;
+        height: 200px;
+      }
+      .item {
+        border: 1px solid #dddddd;
         height: 50px;
         margin-bottom: 8px;
       }
@@ -22,42 +30,75 @@
   </head>
   <body>
     <div class="container">
-      <ul class="wrapper">
-        <li class="item"></li>
-      </ul>
+      <div class="canvas">
+        <canvas id="canvas-bg"></canvas>
+        <canvas id="canvas-ver"></canvas>
+      </div>
+      <div class="slider">
+        <div class="track">拖动滑块完成上方拼图</div>
+        <div class="button el-icon-s-grid"></div>
+      </div>
+      <div class="operation">
+        <span title="刷新验证码" class="el-icon-refresh-left"></span>
+      </div>
     </div>
     <script>
-      class Virtual {
-        constructor(contain,scroll,data,itemHeight) {
-          this.contain = document.querySelector(contain);
-          this.scroll = document.querySelector(scroll);
-          this.itemHeight = itemHeight;
-          this.totalHeight = itemHeight*data.length;
-          this.showLength = Math.ceil(this.contain.clientHeight/itemHeight);
-          this.start = 0;
-          this.end = 0;
-          this.data = data;
-          this.createDom();
-          this.contain.addEventListener('scroll',()=>{
-            this.createDom();
-          })
-        }
+        function draw(mx = 0, bx = 0, y = 0) {
+          let mainDom = document.querySelector("#canvas-ver");
+          let bg = mainDom.getContext("2d");
+          let width = mainDom.width;
+          let height = mainDom.height;
 
-        createDom() {
-          this.start = Math.floor(this.contain.scrollTop/this.itemHeight);
-          this.end =  this.start + this.showLength;
-          this.scroll.style.marginTop = this.start*this.itemHeight + 'px';
-          this.scroll.style.height = (this.totalHeight-this.start*this.itemHeight) + 'px';
-          let dom = '';
-          this.data.slice(this.start,this.end).forEach(i=>{
-            dom+=`<li class="item">${i}</li>`
-          });
-          this.scroll.innerHTML=dom;
+          let blockDom = document.querySelector("#canvas-bg");
+          let block = blockDom.getContext("2d");
+          //重新赋值，让canvas进行重新绘制
+          blockDom.height = height;
+          mainDom.height = height;
+
+          let imgsrc = "./assets/cat.jpg";
+          let img = document.createElement("img");
+          img.style.objectFit = "scale-down";
+          img.src = imgsrc;
+          img.onload = function () {
+            bg.drawImage(img, 0, 0, width, height);
+            block.drawImage(img, 0, 0, width, height);
+          };
+
+          let mainxy = { x: mx, y: y, r: 9 };
+          let blockxy = { x: bx, y: y, r: 9 };
+          drawBlock(bg, mainxy, "fill");
+          drawBlock(block, blockxy, "clip");
         }
-      }
-      let list = Array.from(Array(99).keys()),
-      itemHeight = 60;
-      new Virtual(".container",".wrapper",list,itemHeight)
+        function drawBlock(ctx, xy = { x: 0, y: 0, r: 10 }, type) {
+          let x = xy.x,
+            y = xy.y,
+            r = xy.r,
+            w = 40;
+          let PI = Math.PI;
+          //绘制
+          ctx.beginPath();
+          //left
+          ctx.moveTo(x, y+r+6);
+          //top
+          ctx.arc(x + (w + 5) / 2, y + r, r, -PI, 0, false);
+          ctx.lineTo(x + w + 5, y+r);
+
+          ctx.arc(x + w + 5, y + w / 2, r, 1.5 * PI, 0.5 * PI, false);
+          ctx.lineTo(x + w + 5, y + w);
+
+          ctx.arc(x + (w + 5) / 2, y + w, r, 0, PI, false);
+          ctx.lineTo(x, y + w);
+          ctx.arc(x, y + w / 2, r, 0.5 * PI, 1.5 * PI, true);
+          ctx.lineTo(x, y);
+          //修饰，没有会看不出效果
+          ctx.lineWidth = 1;
+          ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+          ctx.stroke();
+          ctx[type]();
+          ctx.globalCompositeOperation = "xor";
+        }
+        draw()
     </script>
   </body>
 </html>

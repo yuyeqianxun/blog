@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        /* #canvas{
+            width: 200px;
+            height: 150px;
+        } */
+        #circle{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: black;
+        }
+        #canvas-item{
+            position: absolute;
+            left: 300px;
+        }
+    </style>
+  </head>
+  <body>
+      
+      <canvas id="canvas-item"></canvas>
+      <canvas id="canvas-bg"></canvas>
+    <script>
+      function draw() {
+          let mainDom = document.querySelector("#canvas-item");
+          let bg = mainDom.getContext("2d");
+          let width = 600;
+          let height = 400;
+
+          let blockDom = document.querySelector("#canvas-bg");
+          let block = blockDom.getContext("2d");
+          //重新赋值，让canvas进行重新绘制
+          blockDom.height = height;
+          mainDom.height = height;
+          blockDom.width = width;
+          mainDom.width = width;
+
+          let imgsrc = "./assets/cat.jpg";
+          let img = document.createElement("img");
+          img.style.objectFit = "scale-down";
+          img.src = imgsrc;
+          img.onload = function () {
+            bg.drawImage(img, 0, 0, width, height);
+            block.drawImage(img, 0, 0, width, height);
+          };
+          drawItem(bg);
+          drawItem(block,'');
+      }
+      function drawItem(ctx,type='fill') {
+        if (ctx) {
+            ctx.beginPath();
+            ctx.moveTo(0, 30);
+            ctx.arc(66, 20, 20, Math.PI*5/6, Math.PI/6, false);
+            ctx.lineTo(132, 30);
+            ctx.arc(142, 96, 20, Math.PI*4/3, Math.PI*2/3, false);
+            ctx.lineTo(132, 160);
+            ctx.arc(66, 170, 20, -Math.PI/6, Math.PI*7/6, false);
+            ctx.lineTo(0, 160);
+            ctx.arc(10, 96, 20, Math.PI*2/3, Math.PI*4/3, true);
+            
+            if(type==='fill'){
+                ctx.lineWidth = 3;
+                ctx.strokeStyle="rgba(255,255,255,0.7)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0)";
+                ctx.stroke();
+                ctx.clip();
+            }else{
+                ctx.lineWidth = 3;
+                ctx.strokeStyle="rgba(255,255,255,0.5)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+                ctx.fill();
+                ctx.stroke();
+                ctx.globalCompositeOperation = "destination-atop";
+            }
+           
+            ctx.closePath();
+        }
+      }
+      draw()
+    </script>
+  </body>
+</html>
