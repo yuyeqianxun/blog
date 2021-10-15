@@ -51,20 +51,18 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-var maxSubArray = function(nums) {
-    let l=0,r=0,sum=0,res=Number.MIN_SAFE_INTEGER;
-    while(r<nums.length){
-        sum+=nums[r];
-        res=Math.max(sum,res);
-        r++;
-        if(sum<0){
-            l=r;
-            sum=0;
+      var plusOne = function (digits) {
+        let len = digits.length;
+        let last = digits[len-1]+1;
+        let carry = Math.floor(last / 10);
+        for (let i = digits.length - 1; i >= 0; i--) {
+          carry = Math.floor(digits[i] / 10);
+          digits[i] = digits[i] % 10;
+          if (!carry) break;
         }
-    }
-    console.log(res)
-};
-maxSubArray([-1,-2,3])
+        return carry ? [carry, ...digits] : digits;
+      };
+      plusOne([9,9]);
     </script>
   </body>
 </html>
