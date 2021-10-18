@@ -51,8 +51,24 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-      
-      setZeroes([[0,1,2,0],[3,4,5,2],[1,3,1,5]]);
+      var canCompleteCircuit = function (gas, cost) {
+        let totalGas = 0,
+          totalCost = 0,
+          left=0,
+          res=0;
+        for (let i = 0; i < gas.length; i++) {
+          totalGas+=gas[i];
+          totalCost+=cost[i];
+          left+=(gas[i]-cost[i]);
+          if(left<0){
+            res=i+1;
+            left=0
+          }
+        }
+        return totalGas >= totalCost ? res : -1;
+      };
+      canCompleteCircuit([1,2,3,4,5],
+[3,4,5,1,2]);
     </script>
   </body>
 </html>
