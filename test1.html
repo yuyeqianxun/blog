@@ -51,24 +51,19 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-      var canCompleteCircuit = function (gas, cost) {
-        let totalGas = 0,
-          totalCost = 0,
-          left=0,
-          res=0;
-        for (let i = 0; i < gas.length; i++) {
-          totalGas+=gas[i];
-          totalCost+=cost[i];
-          left+=(gas[i]-cost[i]);
-          if(left<0){
-            res=i+1;
-            left=0
-          }
+      var maxProduct = function (nums) {
+        let max = nums[0];
+        let min = nums[0];
+        let res = nums[0];
+        for (let i = 1; i < nums.length; i++) {
+          let tmp = min;
+          min = Math.min(nums[i], Math.min(max * nums[i], min * nums[i])); // 取最小
+          max = Math.max(nums[i], Math.max(max * nums[i], tmp * nums[i])); /// 取最大
+          res = Math.max(res, max);
         }
-        return totalGas >= totalCost ? res : -1;
+        return res;
       };
-      canCompleteCircuit([1,2,3,4,5],
-[3,4,5,1,2]);
+      maxProduct([-2, 0, -1]);
     </script>
   </body>
 </html>
