@@ -51,18 +51,13 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-      var moveZeroes = function (nums) {
-        let i=0,len = nums.length,time = 0;
-        while(i<len) {
-          if(!nums[i]){
-            nums.splice(i,1).push(0);
-          }else{
-            i++
-          }
-        }
-        return nums
-      };
-      moveZeroes([0, 1, 0, 3, 12]);
+      let A = () => {console.log(1)}
+      function C() {
+        console.log(new.target)
+        console.log(2)
+      }
+      // let b = new A()
+      let d = new C()
     </script>
   </body>
 </html>
