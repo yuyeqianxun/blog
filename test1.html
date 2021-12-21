@@ -51,6 +51,7 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
+<<<<<<< HEAD
       var advantageCount = function(A, B) {
   A.sort((a, b) => a - b)
   let res = []
@@ -80,5 +81,44 @@ function bs (arr, target){
   return left
 }
       advantageCount([12,24,8,32],[13,25,32,11])
+=======
+      var fourSum = function (nums, target) {
+        nums.sort((a, b) => a - b);
+        let [solid, start, move, end] = [
+            0,
+            1,
+            nums.length - 2,
+            nums.length - 1,
+          ],
+          res = [];
+        while (solid < nums.length - 3) {
+          start = solid + 1;
+          while (start < end - 1) {
+            move = start + 1;
+            while (move < end) {
+              let sum = nums[solid] + nums[start] + nums[move] + nums[end];
+              if (sum == target) {
+                res.push([nums[solid],nums[start],nums[move],nums[end]]);
+                break;
+              } else if (sum > target) {
+                while (nums[end] === nums[end - 1]) end--;
+                end--;
+              } else {
+                while (nums[move] === nums[move + 1]) move++;
+                move++;
+              }
+            }
+            while (nums[start] === nums[start + 1]) start++;
+            start++;
+          }
+          while (nums[solid] === nums[solid + 1]) solid++;
+          solid++;
+        }
+        return res;
+      };
+      fourSum([1, 0, -1, 0, -2, 2], 0);
+      []
+      [[-3,0,1,2],[-2,-1,0,3]]
+>>>>>>> 840bd5ff08764a7814f68d956cbf0a5f859fc5dd
     </script>
 </html>
