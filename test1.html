@@ -51,74 +51,30 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-<<<<<<< HEAD
-      var advantageCount = function(A, B) {
-  A.sort((a, b) => a - b)
-  let res = []
-  for(let b of B){
-    let i = bs(A, b)
-    if(i < A.length){
-      res.push(A.splice(i, 1)[0])
-    } else {
-      res.push(A.shift())
-    }
-  }
-  return res
-};
-
-/** 辅助函数: 二分查找 ***/
-function bs (arr, target){
-  let left = 0
-  let right = arr.length
-  while(left < right){
-    let mid = left + ((right - left) >> 1)
-    if(arr[mid] <= target){
-      left = mid + 1
-    } else {
-      right = mid
-    }
-  }
-  return left
-}
-      advantageCount([12,24,8,32],[13,25,32,11])
-=======
-      var fourSum = function (nums, target) {
+      var fourSum = function(nums, target) {
+        const len = nums.length;
+        if(len < 4) return [];
         nums.sort((a, b) => a - b);
-        let [solid, start, move, end] = [
-            0,
-            1,
-            nums.length - 2,
-            nums.length - 1,
-          ],
-          res = [];
-        while (solid < nums.length - 3) {
-          start = solid + 1;
-          while (start < end - 1) {
-            move = start + 1;
-            while (move < end) {
-              let sum = nums[solid] + nums[start] + nums[move] + nums[end];
-              if (sum == target) {
-                res.push([nums[solid],nums[start],nums[move],nums[end]]);
-                break;
-              } else if (sum > target) {
-                while (nums[end] === nums[end - 1]) end--;
-                end--;
-              } else {
-                while (nums[move] === nums[move + 1]) move++;
-                move++;
-              }
-            }
-            while (nums[start] === nums[start + 1]) start++;
-            start++;
-          }
-          while (nums[solid] === nums[solid + 1]) solid++;
-          solid++;
+        const res = [];
+        for(let i = 0; i < len - 3; i++) {
+            // 去重i
+            if(i > 0 && nums[i] === nums[i - 1]) continue;
+            for(let j = i + 1; j < len - 2; j++) {
+                // 去重j
+                if(j > i + 1 && nums[j] === nums[j - 1]) continue;
+                let l = j + 1, r = len - 1;
+                while(l < r) {
+                    const sum = nums[i] + nums[j] + nums[l] + nums[r];
+                    if(sum < target) { l++; continue}
+                    if(sum > target) { r--; continue}
+                    res.push([nums[i], nums[j], nums[l], nums[r]]);
+                    while(l < r && nums[l] === nums[++l]);
+                    while(l < r && nums[r] === nums[--r]);
+                }
+            } 
         }
         return res;
       };
-      fourSum([1, 0, -1, 0, -2, 2], 0);
-      []
-      [[-3,0,1,2],[-2,-1,0,3]]
->>>>>>> 840bd5ff08764a7814f68d956cbf0a5f859fc5dd
+      fourSum([-3,-2,-1,0,0,1,2,3],0)
     </script>
 </html>
