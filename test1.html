@@ -51,30 +51,20 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-      var fourSum = function(nums, target) {
-        const len = nums.length;
-        if(len < 4) return [];
-        nums.sort((a, b) => a - b);
-        const res = [];
-        for(let i = 0; i < len - 3; i++) {
-            // 去重i
-            if(i > 0 && nums[i] === nums[i - 1]) continue;
-            for(let j = i + 1; j < len - 2; j++) {
-                // 去重j
-                if(j > i + 1 && nums[j] === nums[j - 1]) continue;
-                let l = j + 1, r = len - 1;
-                while(l < r) {
-                    const sum = nums[i] + nums[j] + nums[l] + nums[r];
-                    if(sum < target) { l++; continue}
-                    if(sum > target) { r--; continue}
-                    res.push([nums[i], nums[j], nums[l], nums[r]]);
-                    while(l < r && nums[l] === nums[++l]);
-                    while(l < r && nums[r] === nums[--r]);
-                }
-            } 
+      var subarraySum = function(nums, k) {
+        let sum = new Array(nums.length+1).fill(0), obj = {}, res=0;
+        for(let i=0;i<nums.length;i++) {
+            sum[i+1]=nums[i]+sum[i]; 
+            let find = sum[i+1] - k;
+            if(find===0) {
+                res+=obj[find]?obj[find]+1:1
+            }else if(obj[find]!=undefined) {
+                res+=obj[find]
+            }
+            obj[sum[i+1]]?obj[sum[i+1]]++:obj[sum[i+1]]=1;
         }
         return res;
       };
-      fourSum([-3,-2,-1,0,0,1,2,3],0)
+      subarraySum([1,1,1],2)
     </script>
 </html>
