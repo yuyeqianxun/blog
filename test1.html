@@ -50,21 +50,4 @@
     <div class="tunnel">
       <div class="drag-btn">验证</div>
     </div>
-    <script>
-      var subarraySum = function(nums, k) {
-        let sum = new Array(nums.length+1).fill(0), obj = {}, res=0;
-        for(let i=0;i<nums.length;i++) {
-            sum[i+1]=nums[i]+sum[i]; 
-            let find = sum[i+1] - k;
-            if(find===0) {
-                res+=obj[find]?obj[find]+1:1
-            }else if(obj[find]!=undefined) {
-                res+=obj[find]
-            }
-            obj[sum[i+1]]?obj[sum[i+1]]++:obj[sum[i+1]]=1;
-        }
-        return res;
-      };
-      subarraySum([1,1,1],2)
-    </script>
 </html>
