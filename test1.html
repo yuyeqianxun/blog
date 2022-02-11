@@ -51,20 +51,24 @@
       <div class="drag-btn">验证</div>
     </div>
     <script>
-      var subarraySum = function(nums, k) {
-        let sum = new Array(nums.length+1).fill(0), obj = {}, res=0;
-        for(let i=0;i<nums.length;i++) {
-            sum[i+1]=nums[i]+sum[i]; 
-            let find = sum[i+1] - k;
-            if(find===0) {
-                res+=obj[find]?obj[find]+1:1
-            }else if(obj[find]!=undefined) {
-                res+=obj[find]
-            }
-            obj[sum[i+1]]?obj[sum[i+1]]++:obj[sum[i+1]]=1;
-        }
-        return res;
-      };
-      subarraySum([1,1,1],2)
+      function curry(func) {
+  return function curried(...args) {
+    // 关键知识点：function.length 用来获取函数的形参个数
+    // 补充：arguments.length 获取的是实参个数
+    if (args.length >= func.length) {
+      return func.apply(this, args)
+    }
+    return function (...args2) {
+      return curried.apply(this, args.concat(args2))
+    }
+  }
+}
+
+// 测试
+function sum (a, b, c) {
+  return a + b + c
+}
+const curriedSum = curry(sum)
+console.log(curriedSum(1)(2)(3))
     </script>
 </html>
