@@ -79,6 +79,10 @@ function insertionSort(arr) {
 
 # 5. 归并排序
 
+- 将数组无线两等分
+- 分到最小后没等分开始分别排序
+- 排序完开始合并
+
 ```js
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
@@ -97,6 +101,9 @@ function merge(left, right) {
 ```
 
 # 6. 快速排序
+- 从数列中挑出一个基准值。
+- 将所有比基准值小的摆放在基准前面，所有比基准值大的摆在基准的后面(相同的数可以到任一边)；在这个分区退出之后，该基准就处于数列的中间位置。
+- 递归地把"基准值前面的子数列"和"基准值后面的子数列"进行排序。
 
 ```js
 function quicksort(arr) {
