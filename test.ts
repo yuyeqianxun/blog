@@ -14,7 +14,7 @@ type Key<K> = K
 type LookUp<U, T> = U extends {type: T} ? Cat : never;
 type MyDog = LookUp<Animal, 'dog'> // expected to be `Dog`
 type A = {type:'dog'}
-
+                                                                                                                                                                                                                                                                                                                                                                                                      
 type B = Dog extends A?Dog:Cat
 
 let a:Animal = {
