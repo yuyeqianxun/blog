@@ -1,20 +1,20 @@
 ```js
 Function.prototype.myCall = function (context, ...args) {
-  let context = context || window
+  let that = context || window
   let fn = Symbol();
-  context[fn] = this;
-  let result = context[fn](...args)
-  delete context.fn
+  that[fn] = this;
+  let result = that[fn](...args)
+  delete that[fn]
   return result
 }
 ```
 ```js
 Function.prototype.myApply  = function (context, args) {
-  let context = context || window
+  let that = context || window
   let fn = Symbol();
-  context[fn] = this;
-  let result = context[fn](...args)
-  delete context.fn
+  that[fn] = this;
+  let result = that[fn](...args)
+  delete that[fn]
   return result
 }
 ```
